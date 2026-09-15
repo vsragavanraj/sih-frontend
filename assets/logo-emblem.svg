@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF" />
+      <stop offset="50%" stop-color="#1D4ED8" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <!-- Outer Shield -->
+  <path d="M50 5 L88 20 V48 C88 72 70 90 50 96 C30 90 12 72 12 48 V20 Z" fill="url(#shieldGrad)" stroke="#3B82F6" stroke-width="2"/>
+  <!-- Inner Shield Accent -->
+  <path d="M50 12 L81 24 V48 C81 67 66 82 50 87 C34 82 19 67 19 48 V24 Z" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.8"/>
+  <!-- Scales of Justice & AI Node Motif -->
+  <path d="M50 25 V68 M32 35 H68 M32 35 L24 50 C24 55 40 55 40 50 Z M68 35 L60 50 C60 55 76 55 76 50 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Central AI Checkmark/Spark -->
+  <path d="M43 62 L48 67 L57 56" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

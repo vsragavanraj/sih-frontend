@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scanner Dashboard - LabelGuard AI | AI Package & Label Compliance Scanner</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- Top Government Header Strip -->
+  <header class="gov-top-bar">
+    <div class="container gov-top-inner">
+      <div class="gov-brand-strip">
+        <span class="gov-flag-icon" style="background: linear-gradient(180deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); display: inline-block;"></span>
+        <div class="gov-title-text">
+          Government of India • Ministry of Consumer Affairs | <span>Department of Legal Metrology Portal</span>
+        </div>
+      </div>
+      <div class="gov-tools">
+        <div class="a11y-controls">
+          <button class="a11y-btn" id="btnFontDecrease">A-</button>
+          <button class="a11y-btn" id="btnFontReset">A</button>
+          <button class="a11y-btn" id="btnFontIncrease">A+</button>
+          <button class="a11y-btn" id="btnHighContrast"><i class="ri-contrast-2-line"></i></button>
+        </div>
+        <select class="lang-select">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-emblem.svg" alt="Logo" />
+        <div class="brand-info">
+          <div class="brand-name">LabelGuard <span>AI</span></div>
+          <div class="brand-tag">Legal Metrology Compliance</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="scanner.html" class="nav-link active">Scanner Dashboard</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Analytics</a></li>
+        <li><a href="rules.html" class="nav-link">Rule Library</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-secondary"><i class="ri-dashboard-3-line"></i> Officer Analytics</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Main Container -->
+  <main class="dashboard-wrapper">
+    <div class="container">
+      
+      <!-- Dashboard Header Row -->
+      <div class="dashboard-header">
+        <div class="dashboard-title-group">
+          <h1>AI Package Scanner Dashboard</h1>
+          <p>Upload package label images to run instant Legal Metrology compliance checks.</p>
+        </div>
+        <div class="officer-badge">
+          <div class="officer-avatar">LM</div>
+          <div>
+            <div style="font-size: 0.8125rem; font-weight: 700; color: #0F172A;">Inspector R. K. Sharma</div>
+            <div style="font-size: 0.7rem; color: #64748B;">Zone 4 - Legal Metrology Dept</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. LARGE DRAG AND DROP UPLOAD AREA -->
+      <div class="upload-card-container">
+        <div class="upload-dropzone" id="uploadDropzone">
+          <input type="file" id="packageFileInput" accept=".jpg,.jpeg,.png,.pdf" style="display: none;" />
+          
+          <div class="upload-icon-circle">
+            <i class="ri-upload-cloud-2-line"></i>
+          </div>
+
+          <h2 class="upload-heading">Drag and Drop Package Label Image Here</h2>
+          <p class="upload-subtext">or click to browse from your device computer or camera capture</p>
+
+          <div class="formats-pills">
+            <span class="format-pill">JPG</span>
+            <span class="format-pill">PNG</span>
+            <span class="format-pill">PDF</span>
+          </div>
+
+          <div>
+            <button class="btn btn-primary" onclick="document.getElementById('packageFileInput').click()"><i class="ri-file-upload-line"></i> Upload Image / Document</button>
+          </div>
+
+          <!-- Sample Labels Quick Test Selector -->
+          <div class="samples-row">
+            <span class="samples-label">Quick Test Sample Labels:</span>
+            <button class="sample-chip" data-sample="sample1">
+              <i class="ri-price-tag-3-line"></i> Organic Flour 5kg (92% Score)
+            </button>
+            <button class="sample-chip" data-sample="sample2">
+              <i class="ri-drop-line"></i> Herbal Face Wash (64% Violations)
+            </button>
+            <button class="sample-chip" data-sample="sample3">
+              <i class="ri-shield-check-line"></i> Wafer Snacks (100% Compliant)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. ANIMATED AI SCANNING PIPELINE OVERLAY -->
+      <div class="scan-progress-card" id="scanProgressCard">
+        <div class="progress-header">
+          <div class="progress-title-group">
+            <h2><i class="ri-scan-2-line" style="color: #2563EB;"></i> AI OCR Processing & Legal Evaluation</h2>
+            <p style="font-size: 0.875rem; color: #64748B;">Parsing text fields, checking font heights, and validating Legal Metrology Rules...</p>
+          </div>
+          <div class="overall-progress-text" id="masterProgressPercent">0%</div>
+        </div>
+
+        <!-- Master Progress Track -->
+        <div class="progress-track-master">
+          <div class="progress-fill-master" id="masterProgressFill"></div>
+        </div>
+
+        <!-- 4 Sequential Stages -->
+        <div class="stages-list">
+          <div class="stage-item" id="stage1">
+            <div class="stage-icon-step">1</div>
+            <div>
+              <div class="stage-name">Extracting Text</div>
+              <div class="stage-subdetail">Neural OCR parsing MRP, Net Qty, Dates, Address</div>
+            </div>
+            <div>
+              <div class="stage-bar-mini"><div class="stage-bar-fill"></div></div>
+            </div>
+            <div class="stage-status-icon"><i class="ri-time-line"></i></div>
+          </div>
+
+          <div class="stage-item" id="stage2">
+            <div class="stage-icon-step">2</div>
+            <div>
+              <div class="stage-name">Detecting Label Elements</div>
+              <div class="stage-subdetail">Mapping Principal Display Panel area & font height ratios</div>
+            </div>
+            <div>
+              <div class="stage-bar-mini"><div class="stage-bar-fill"></div></div>
+            </div>
+            <div class="stage-status-icon"><i class="ri-time-line"></i></div>
+          </div>
+
+          <div class="stage-item" id="stage3">
+            <div class="stage-icon-step">3</div>
+            <div>
+              <div class="stage-name">Checking Legal Metrology Rules</div>
+              <div class="stage-subdetail">Evaluating Packaged Commodities Rules 2011 & 2024 Amendments</div>
+            </div>
+            <div>
+              <div class="stage-bar-mini"><div class="stage-bar-fill"></div></div>
+            </div>
+            <div class="stage-status-icon"><i class="ri-time-line"></i></div>
+          </div>
+
+          <div class="stage-item" id="stage4">
+            <div class="stage-icon-step">4</div>
+            <div>
+              <div class="stage-name">Generating Compliance Report</div>
+              <div class="stage-subdetail">Compiling audit checklist, risk level, & certificate metadata</div>
+            </div>
+            <div>
+              <div class="stage-bar-mini"><div class="stage-bar-fill"></div></div>
+            </div>
+            <div class="stage-status-icon"><i class="ri-time-line"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. COMPLIANCE REPORT DASHBOARD VIEW -->
+      <div class="report-container" id="reportContainer">
+        
+        <!-- Top Metrics Row -->
+        <div class="report-grid-top">
+          
+          <!-- Compliance Score Card with SVG Circular Bar -->
+          <div class="score-card">
+            <div class="circular-gauge-box">
+              <svg viewBox="0 0 140 140">
+                <circle class="circle-bg" cx="70" cy="70" r="60"></circle>
+                <circle class="circle-fill" id="circleFillGauge" cx="70" cy="70" r="60"></circle>
+              </svg>
+              <div class="score-center-text">
+                <div class="score-number" id="scoreNumber">92%</div>
+                <div class="score-label">Score</div>
+              </div>
+            </div>
+
+            <div class="score-info">
+              <h3>Legal Compliance Rating</h3>
+              <p>Automated evaluation against Legal Metrology (Packaged Commodities) Rules.</p>
+              <div style="display: flex; gap: 0.5rem;">
+                <span class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.3rem 0.75rem;">HIGH COMPLIANCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Level Indicator Card -->
+          <div class="risk-card">
+            <div class="risk-header">
+              <div>
+                <span style="font-size: 0.75rem; color: #64748B; font-weight: 700; text-transform: uppercase;">Compliance Risk Rating</span>
+                <h3 style="font-size: 1.35rem; font-weight: 800; color: #0F172A; margin-top: 2px;">Moderate Legal Risk</h3>
+              </div>
+              <span class="risk-badge moderate"><i class="ri-alert-line"></i> Moderate Risk</span>
+            </div>
+
+            <div>
+              <div class="risk-meter-bar">
+                <div class="risk-segment low active"></div>
+                <div class="risk-segment mod active"></div>
+                <div class="risk-segment high"></div>
+              </div>
+              <div style="font-size: 0.8125rem; color: #64748B;">
+                Potential Fine Estimate under Sec 36: <strong>₹25,000</strong> (2 Action Items Required)
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mandatory Declarations Checklist Section -->
+        <div class="checklist-card">
+          <div class="checklist-title">
+            <span><i class="ri-checkbox-multiple-line" style="color: #2563EB;"></i> Mandatory Declarations Checklist</span>
+            <span style="font-size: 0.8125rem; color: #64748B; font-weight: 600;">5 / 7 Standards Verified</span>
+          </div>
+
+          <div class="checklist-grid" id="checklistGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Violation Summary & AI Recommendation Grid -->
+        <div class="report-grid-bottom">
+          
+          <!-- Violation Summary Cards -->
+          <div class="violation-card">
+            <h3 class="card-section-heading"><i class="ri-error-warning-line" style="color: #DC2626;"></i> Detected Legal Violations</h3>
+            <div class="violation-list" id="violationList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- AI Recommendation Panel -->
+          <div class="ai-recommendation-card">
+            <h3 class="card-section-heading"><i class="ri-sparkling-fill" style="color: #2563EB;"></i> AI Corrective Recommendations</h3>
+            <div class="recommendation-list" id="recommendationList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Report Bottom Actions -->
+        <div class="report-actions-bar">
+          <button class="btn btn-secondary" onclick="resetScanner()"><i class="ri-refresh-line"></i> Scan Another Package</button>
+          <button class="btn btn-primary" id="btnGenerateCert"><i class="ri-award-line"></i> Generate Compliance Certificate</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <div>© 2026 Department of Legal Metrology Portal. All rights reserved.</div>
+        <div>
+          <a href="index.html" style="color: #94A3B8; margin-right: 1rem;">Home</a>
+          <a href="admin.html" style="color: #94A3B8; margin-right: 1rem;">Admin Analytics</a>
+          <a href="rules.html" style="color: #94A3B8;">Rule Library</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/certificate.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

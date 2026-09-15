@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Analytics Dashboard - Legal Metrology Officer Portal | LabelGuard AI</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top Government Header Strip -->
+  <header class="gov-top-bar">
+    <div class="container gov-top-inner">
+      <div class="gov-brand-strip">
+        <span class="gov-flag-icon" style="background: linear-gradient(180deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); display: inline-block;"></span>
+        <div class="gov-title-text">
+          Government of India • Ministry of Consumer Affairs | <span>Department of Legal Metrology Portal</span>
+        </div>
+      </div>
+      <div class="gov-tools">
+        <div class="a11y-controls">
+          <button class="a11y-btn" id="btnFontDecrease">A-</button>
+          <button class="a11y-btn" id="btnFontReset">A</button>
+          <button class="a11y-btn" id="btnFontIncrease">A+</button>
+          <button class="a11y-btn" id="btnHighContrast"><i class="ri-contrast-2-line"></i></button>
+        </div>
+        <select class="lang-select">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-emblem.svg" alt="Logo" />
+        <div class="brand-info">
+          <div class="brand-name">LabelGuard <span>AI</span></div>
+          <div class="brand-tag">Legal Metrology Compliance</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="scanner.html" class="nav-link">Scanner Dashboard</a></li>
+        <li><a href="admin.html" class="nav-link active">Admin Analytics</a></li>
+        <li><a href="rules.html" class="nav-link">Rule Library</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="scanner.html" class="btn btn-primary"><i class="ri-scan-line"></i> Launch Scanner</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Executive Analytics Section -->
+  <main class="admin-wrapper">
+    <div class="container">
+      
+      <!-- Executive Header -->
+      <div class="admin-header">
+        <div class="admin-title-group">
+          <h1>Officer Analytics Dashboard</h1>
+          <p>National Legal Metrology package enforcement statistics & compliance metrics overview.</p>
+        </div>
+
+        <div class="admin-controls">
+          <select class="filter-select">
+            <option>All Zones / National</option>
+            <option>Zone 1 - North Region</option>
+            <option>Zone 2 - West Region</option>
+            <option>Zone 3 - South Region</option>
+            <option>Zone 4 - East Region</option>
+          </select>
+          <select class="filter-select">
+            <option>Last 30 Days</option>
+            <option>Last 90 Days</option>
+            <option>Year 2026</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 1. KEY KPI METRICS CARDS (4 METRICS) -->
+      <div class="kpi-grid">
+        
+        <!-- Metric 1: Total Packages Scanned -->
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Total Packages Scanned</span>
+            <div class="kpi-icon-wrapper kpi-icon-1"><i class="ri-box-3-line"></i></div>
+          </div>
+          <div class="kpi-value" id="kpiTotalScans">100</div>
+          <div class="kpi-trend positive"><i class="ri-arrow-up-line"></i> +14.2% vs last month</div>
+        </div>
+
+        <!-- Metric 2: Compliant Packages -->
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Compliant Packages</span>
+            <div class="kpi-icon-wrapper kpi-icon-2"><i class="ri-checkbox-circle-line"></i></div>
+          </div>
+          <div class="kpi-value" id="kpiCompliantScans">82</div>
+          <div class="kpi-trend positive"><i class="ri-check-line"></i> 82% Verified</div>
+        </div>
+
+        <!-- Metric 3: Non-Compliant Packages -->
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Non-Compliant Packages</span>
+            <div class="kpi-icon-wrapper kpi-icon-3"><i class="ri-error-warning-line"></i></div>
+          </div>
+          <div class="kpi-value" id="kpiNonCompliantScans">18</div>
+          <div class="kpi-trend negative"><i class="ri-alert-line"></i> 18% Flagged</div>
+        </div>
+
+        <!-- Metric 4: Compliance Rate -->
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Compliance Rate</span>
+            <div class="kpi-icon-wrapper kpi-icon-4"><i class="ri-line-chart-line"></i></div>
+          </div>
+          <div class="kpi-value" id="kpiAccuracyRate">96%</div>
+          <div class="kpi-trend positive"><i class="ri-arrow-up-line"></i> Accuracy Growth</div>
+        </div>
+
+      </div>
+
+      <!-- 2. CHART.JS ANALYTICS GRID -->
+      <div class="charts-grid-top">
+        
+        <!-- Line Chart: Monthly Scanning Trend -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-title"><i class="ri-line-chart-fill" style="color: #2563EB;"></i> Monthly Scan & Compliance Trend</div>
+            <span style="font-size: 0.8125rem; color: #64748B;">Jan - Aug 2026</span>
+          </div>
+          <div class="chart-container-box">
+            <canvas id="scansLineChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Pie Chart: Package Category Distribution -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-title"><i class="ri-pie-chart-fill" style="color: #2563EB;"></i> Category Distribution</div>
+          </div>
+          <div class="chart-container-box">
+            <canvas id="categoryPieChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="charts-grid-bottom">
+        <!-- Bar Chart: Top Violations by Category -->
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div class="chart-title"><i class="ri-bar-chart-fill" style="color: #2563EB;"></i> Top Legal Metrology Violations by Violation Category</div>
+            <span style="font-size: 0.8125rem; color: #64748B;">Total Violations Breakdown</span>
+          </div>
+          <div class="chart-container-box">
+            <canvas id="violationsBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RECENT VIOLATIONS ENFORCEMENT TABLE -->
+      <div class="table-card">
+        <div class="table-header-controls">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">Recent Violations & Enforcement Log</h3>
+            <p style="font-size: 0.875rem; color: #64748B;">Real-time stream of non-compliant package label scans across inspectors.</p>
+          </div>
+
+          <div class="table-search-box">
+            <i class="ri-search-line"></i>
+            <input type="text" id="tableSearchInput" placeholder="Search brand, violation, or ID..." />
+          </div>
+        </div>
+
+        <div class="table-responsive-wrapper">
+          <table class="gov-data-table">
+            <thead>
+              <tr>
+                <th>Scan ID</th>
+                <th>Brand / Manufacturer</th>
+                <th>Category</th>
+                <th>Violation Type</th>
+                <th>Legal Clause</th>
+                <th>Risk Severity</th>
+                <th>Scanned Date</th>
+                <th>Action Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family: monospace; font-weight: 700;">#SC-98421</td>
+                <td class="brand-cell">SunGlow Consumer Goods Ltd</td>
+                <td>Cosmetics</td>
+                <td>MRP Price Sticker Overlap</td>
+                <td>Section 36(2)</td>
+                <td><span class="severity-pill critical"><i class="ri-close-circle-fill"></i> Critical</span></td>
+                <td>27 Aug 2026</td>
+                <td><span class="status-pill-sub pending">Notice Pending</span></td>
+                <td><button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="alert('Viewing Enforcement Notice #SC-98421')">View Notice</button></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 700;">#SC-98418</td>
+                <td class="brand-cell">TastyBites Snacks Pvt Ltd</td>
+                <td>Food & Beverages</td>
+                <td>Missing Manufacturer Address</td>
+                <td>Rule 6(1)(a)</td>
+                <td><span class="severity-pill major"><i class="ri-alert-fill"></i> Major</span></td>
+                <td>27 Aug 2026</td>
+                <td><span class="status-pill-sub issued">Notice Issued</span></td>
+                <td><button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="alert('Viewing Enforcement Notice #SC-98418')">View Notice</button></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 700;">#SC-98415</td>
+                <td class="brand-cell">Apex Electronics India</td>
+                <td>Consumer Tech</td>
+                <td>Expiry Date Font Size < 1.5mm</td>
+                <td>Rule 9</td>
+                <td><span class="severity-pill minor"><i class="ri-information-fill"></i> Minor</span></td>
+                <td>26 Aug 2026</td>
+                <td><span class="status-pill-sub issued">Warning Sent</span></td>
+                <td><button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="alert('Viewing Enforcement Notice #SC-98415')">View Notice</button></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 700;">#SC-98402</td>
+                <td class="brand-cell">Global Importers Corp</td>
+                <td>Imported Goods</td>
+                <td>Missing Country of Origin</td>
+                <td>Rule 6(1)(n)</td>
+                <td><span class="severity-pill critical"><i class="ri-close-circle-fill"></i> Critical</span></td>
+                <td>26 Aug 2026</td>
+                <td><span class="status-pill-sub pending">Stock Seized</span></td>
+                <td><button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="alert('Viewing Enforcement Notice #SC-98402')">View Notice</button></td>
+              </tr>
+              <tr>
+                <td style="font-family: monospace; font-weight: 700;">#SC-98399</td>
+                <td class="brand-cell">NutriLife Health Foods</td>
+                <td>Pharmaceuticals</td>
+                <td>Customer Care Email Omitted</td>
+                <td>Rule 6(1)(h)</td>
+                <td><span class="severity-pill major"><i class="ri-alert-fill"></i> Major</span></td>
+                <td>25 Aug 2026</td>
+                <td><span class="status-pill-sub issued">Notice Issued</span></td>
+                <td><button class="btn btn-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="alert('Viewing Enforcement Notice #SC-98399')">View Notice</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <div>© 2026 Department of Legal Metrology Portal. All rights reserved.</div>
+        <div>
+          <a href="index.html" style="color: #94A3B8; margin-right: 1rem;">Home</a>
+          <a href="scanner.html" style="color: #94A3B8; margin-right: 1rem;">Scanner Dashboard</a>
+          <a href="rules.html" style="color: #94A3B8;">Rule Library</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

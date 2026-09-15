@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LabelGuard AI - AI Package & Label Compliance Scanner | Department of Legal Metrology</title>
+  
+  <!-- Remix Icons & Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- 1. TOP GOVERNMENT HEADER STRIP -->
+  <header class="gov-top-bar">
+    <div class="container gov-top-inner">
+      <div class="gov-brand-strip">
+        <span class="gov-flag-icon" style="background: linear-gradient(180deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); display: inline-block;"></span>
+        <div class="gov-title-text">
+          Government of India • Ministry of Consumer Affairs | <span>Department of Legal Metrology Portal</span>
+        </div>
+      </div>
+      <div class="gov-tools">
+        <div class="a11y-controls">
+          <button class="a11y-btn" id="btnFontDecrease" title="Decrease Font Size">A-</button>
+          <button class="a11y-btn" id="btnFontReset" title="Reset Font Size">A</button>
+          <button class="a11y-btn" id="btnFontIncrease" title="Increase Font Size">A+</button>
+          <button class="a11y-btn" id="btnHighContrast" title="Toggle High Contrast"><i class="ri-contrast-2-line"></i></button>
+        </div>
+        <select class="lang-select">
+          <option value="en">English (English)</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. NAVIGATION BAR (GLASSMORPHIC) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-emblem.svg" alt="LabelGuard AI Logo" />
+        <div class="brand-info">
+          <div class="brand-name">LabelGuard <span>AI</span></div>
+          <div class="brand-tag">Legal Metrology Compliance</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="scanner.html" class="nav-link">Scanner Dashboard</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Analytics</a></li>
+        <li><a href="rules.html" class="nav-link">Rule Library</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="scanner.html" class="btn btn-primary"><i class="ri-upload-cloud-2-line"></i> Upload Package</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 3. HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="ri-shield-check-fill"></i> Official Legal Metrology Enforcement & Verification System
+        </div>
+        <h1 class="hero-title">
+          AI Package & Label <span>Compliance Scanner</span>
+        </h1>
+        <p class="hero-subtitle">
+          Detect Legal Metrology violations automatically using AI. Instant automated OCR label parsing, mandatory declaration verification, and legal penalty calculation under Packaged Commodities Rules.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="scanner.html" class="btn btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
+            <i class="ri-upload-cloud-2-line"></i> Upload Package
+          </a>
+          <a href="#features" class="btn btn-outline-light" style="padding: 0.9rem 2rem; font-size: 1rem;">
+            <i class="ri-information-line"></i> Learn More
+          </a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <div class="stat-number">1.4M+</div>
+            <div class="stat-label">Labels Scanned</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.4%</div>
+            <div class="stat-label">AI OCR Precision</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">₹18.2Cr</div>
+            <div class="stat-label">Non-Compliance Fines Identified</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Interactive Mockup -->
+      <div class="hero-visual">
+        <div class="hero-glass-card">
+          <div class="hero-card-header">
+            <div style="font-weight: 700; font-size: 0.9rem; color: #E2E8F0;">
+              <i class="ri-scan-2-line" style="color: #60A5FA;"></i> LIVE AI OCR LABEL PARSER
+            </div>
+            <div class="scanner-status">
+              <span class="status-dot"></span> AI ENGINE ACTIVE
+            </div>
+          </div>
+
+          <div class="package-preview-wrapper">
+            <div class="scan-laser-line"></div>
+            
+            <!-- Simulated Label Graphic -->
+            <div style="width: 100%; height: 100%; padding: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; display: flex; flex-direction: column; justify-content: space-between; border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <h4 style="font-size: 1rem; color: #93c5fd;">ORGANIC FLOUR 5KG</h4>
+                  <span style="font-size: 0.75rem; color: #94a3b8;">Batch No: FL-2026-X8</span>
+                </div>
+                <span style="font-size: 0.75rem; background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 8px; border-radius: 4px;">PDP Area Match</span>
+              </div>
+
+              <!-- OCR Target Boxes -->
+              <div class="ocr-bbox ocr-bbox-1">
+                <span class="bbox-tag">MRP: ₹240.00 INCL TAX</span>
+              </div>
+              <div class="ocr-bbox ocr-bbox-2">
+                <span class="bbox-tag">MFG: 08/2026 • EXP: 08/2027</span>
+              </div>
+              <div class="ocr-bbox ocr-bbox-3">
+                <span class="bbox-tag">MISSING ADDRESS!</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div>
+              <span style="font-size: 0.75rem; color: #94A3B8; display: block;">Compliance Rating</span>
+              <strong style="color: white; font-size: 1rem;">Legal Metrology Audit Score</strong>
+            </div>
+            <div class="hero-score-badge">
+              <span class="score-pill">92% PASSED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURES SECTION (4 GLASSMORPHISM CARDS) -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 class="section-title">Legal Metrology Compliance Features</h2>
+        <p class="section-subtitle">
+          Designed specifically for Legal Metrology Officers, enforcement agencies, and consumer goods manufacturers to streamline package label verification.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="glass-feature-card">
+          <span class="feature-number">01</span>
+          <div class="feature-icon-box">
+            <i class="ri-scan-2-fill"></i>
+          </div>
+          <h3 class="card-title">AI OCR Label Extraction</h3>
+          <p class="card-desc">
+            Multi-lingual neural optical character recognition automatically reads MRP, Net Quantity, Date of Manufacture, Expiry, Batch Number, Country of Origin, and Manufacturer Address.
+          </p>
+          <ul class="feature-list">
+            <li><i class="ri-check-line"></i> Extracts text in 12+ official scheduled languages</li>
+            <li><i class="ri-check-line"></i> Multi-angle & curved package label deskewing</li>
+            <li><i class="ri-check-line"></i> Automatic Principal Display Panel (PDP) bounding box mapping</li>
+          </ul>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-feature-card">
+          <span class="feature-number">02</span>
+          <div class="feature-icon-box">
+            <i class="ri-scales-3-fill"></i>
+          </div>
+          <h3 class="card-title">Compliance Validation</h3>
+          <p class="card-desc">
+            Evaluates extracted label attributes against Legal Metrology (Packaged Commodities) Rules, 2011 and latest 2024 statutory amendments in real-time.
+          </p>
+          <ul class="feature-list">
+            <li><i class="ri-check-line"></i> Minimum font size vs package area ratio verification</li>
+            <li><i class="ri-check-line"></i> Standard SI unit validation for Net Mass / Volume</li>
+            <li><i class="ri-check-line"></i> Dual-pricing & e-commerce compliance check</li>
+          </ul>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-feature-card">
+          <span class="feature-number">03</span>
+          <div class="feature-icon-box">
+            <i class="ri-error-warning-fill"></i>
+          </div>
+          <h3 class="card-title">Violation Detection</h3>
+          <p class="card-desc">
+            Instantly flags illegible font sizes, missing country of origin, hidden MRP stickers, expired shelf life, and incomplete customer helpline declarations.
+          </p>
+          <ul class="feature-list">
+            <li><i class="ri-check-line"></i> Automated legal section mapping (Section 36 fines)</li>
+            <li><i class="ri-check-line"></i> Risk severity categorization (Low, Moderate, Critical)</li>
+            <li><i class="ri-check-line"></i> AI actionable recommendation generation</li>
+          </ul>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-feature-card">
+          <span class="feature-number">04</span>
+          <div class="feature-icon-box">
+            <i class="ri-file-shield-fill"></i>
+          </div>
+          <h3 class="card-title">Compliance Certificate Generation</h3>
+          <p class="card-desc">
+            Generates tamper-evident, official digital Legal Metrology Compliance Certificates complete with unique verification hash, QR code, and downloadable PDF report.
+          </p>
+          <ul class="feature-list">
+            <li><i class="ri-check-line"></i> Instant official certificate issuance with QR badge</li>
+            <li><i class="ri-check-line"></i> Printable enforcement audit summary for inspectors</li>
+            <li><i class="ri-check-line"></i> Cryptographic stamp verification for public portals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HOW IT WORKS / WORKFLOW SECTION -->
+  <section class="workflow-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Audit Process</span>
+        <h2 class="section-title">How LabelGuard AI Works</h2>
+        <p class="section-subtitle">Seamless 4-step compliance verification workflow for official enforcement.</p>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <h4 class="step-title">Image Upload</h4>
+          <p class="step-desc">Upload package label image or document (JPG, PNG, PDF) or capture via mobile device.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <h4 class="step-title">Neural Scanning</h4>
+          <p class="step-desc">AI OCR engine parses text fields, bounding boxes, and label element geometry.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <h4 class="step-title">Rule Evaluation</h4>
+          <p class="step-desc">Rule engine cross-references extracted declarations against Legal Metrology Act standards.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <h4 class="step-title">Report & Certificate</h4>
+          <p class="step-desc">Receive instant compliance score, checklist breakdown, and downloadable digital certificate.</p>
+        </div>
+      </div>
+
+      <!-- Statutory Notice Banner -->
+      <div class="gov-notice-banner">
+        <div class="notice-content">
+          <h3 class="notice-title"><i class="ri-government-fill"></i> Legal Metrology Statutory Mandate</h3>
+          <p class="notice-desc">
+            Under Section 36 of the Legal Metrology Act, 2009, whoever manufactures, packs, imports or sells any pre-packaged commodity which does not conform to the declarations on the package shall be punishable with fine up to ₹25,000 for first offense, and up to ₹1,00,000 or imprisonment for subsequent offenses.
+          </p>
+        </div>
+        <div>
+          <a href="scanner.html" class="btn btn-primary" style="background: white; color: #0F172A;"><i class="ri-shield-check-line"></i> Test Package Label</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/logo-emblem.svg" alt="Emblem" />
+            <div class="footer-logo-title">LabelGuard AI</div>
+          </div>
+          <p class="footer-desc">
+            Official AI Package & Label Compliance Scanner maintained for Legal Metrology Officers, enforcement inspectors, and consumer protection authorities.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="scanner.html">Scanner Dashboard</a></li>
+            <li><a href="admin.html">Admin Analytics</a></li>
+            <li><a href="rules.html">Rule Library</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Legal Metrology</h4>
+          <ul class="footer-links">
+            <li><a href="rules.html">MRP Declaration Rules</a></li>
+            <li><a href="rules.html">Net Weight Standards</a></li>
+            <li><a href="rules.html">Font Size Ratio Chart</a></li>
+            <li><a href="rules.html">Penalty Schedule</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Ministry Helpdesk</h4>
+          <ul class="footer-links">
+            <li><a href="#"><i class="ri-phone-line"></i> National Helpline: 1915</a></li>
+            <li><a href="#"><i class="ri-mail-line"></i> legalmetrology-support@gov.in</a></li>
+            <li><a href="#"><i class="ri-building-line"></i> Department of Consumer Affairs, New Delhi</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal-note">
+          © 2026 Department of Legal Metrology. Designed for official enforcement. All rights reserved.
+        </div>
+        <div>
+          <a href="#" style="color: #94A3B8; margin-right: 1rem;">Privacy Policy</a>
+          <a href="#" style="color: #94A3B8;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Files -->
+  <script src="js/app.js"></script>
+</body>
+</html>

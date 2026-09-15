@@ -1,0 +1,665 @@
+/* ==========================================================================
+   LabelGuard AI - Scanner Dashboard & Compliance Report Stylesheet
+   ========================================================================== */
+
+.dashboard-wrapper {
+  padding: 3rem 0 5rem;
+  background: var(--bg-main);
+  min-height: calc(100vh - 140px);
+}
+
+.dashboard-header {
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dashboard-title-group h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  letter-spacing: -0.5px;
+}
+
+.dashboard-title-group p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.officer-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.officer-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--navy-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   1. LARGE DRAG AND DROP UPLOAD AREA
+   ========================================================================== */
+.upload-card-container {
+  margin-bottom: 3rem;
+}
+
+.upload-dropzone {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 2px dashed rgba(37, 99, 235, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 4rem 2rem;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-dropzone:hover, .upload-dropzone.dragover {
+  border-color: var(--blue-accent);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.15);
+  transform: translateY(-3px);
+}
+
+.upload-icon-circle {
+  width: 80px;
+  height: 80px;
+  background: var(--blue-light);
+  color: var(--blue-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto 1.5rem;
+  transition: var(--transition);
+}
+
+.upload-dropzone:hover .upload-icon-circle {
+  transform: scale(1.1);
+  background: var(--blue-accent);
+  color: white;
+}
+
+.upload-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 0.5rem;
+}
+
+.upload-subtext {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.formats-pills {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.format-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  background: #E2E8F0;
+  color: var(--navy-dark);
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+/* Sample Images Selector Row */
+.samples-row {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.samples-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.sample-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sample-chip:hover {
+  border-color: var(--blue-accent);
+  color: var(--blue-accent);
+  background: var(--blue-light);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   2. ANIMATED AI SCANNING PIPELINE OVERLAY
+   ========================================================================== */
+.scan-progress-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--border-light);
+  display: none; /* Controlled by JS */
+  margin-bottom: 3rem;
+}
+
+.scan-progress-card.active {
+  display: block;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.progress-title-group h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+}
+
+.overall-progress-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--blue-accent);
+}
+
+/* Overall Progress Bar */
+.progress-track-master {
+  width: 100%;
+  height: 12px;
+  background: #E2E8F0;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.progress-fill-master {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563EB 0%, #3B82F6 50%, #10B981 100%);
+  border-radius: 50px;
+  transition: width 0.4s ease-out;
+  position: relative;
+}
+
+.progress-fill-master::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 4 Individual Scanning Stages */
+.stages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stage-item {
+  display: grid;
+  grid-template-columns: 40px 1.5fr 2fr 40px;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-main);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.stage-item.completed {
+  background: #F0FDF4;
+  border-color: #A7F3D0;
+}
+
+.stage-item.in-progress {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.stage-icon-step {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.stage-item.completed .stage-icon-step {
+  background: var(--success);
+}
+
+.stage-item.in-progress .stage-icon-step {
+  background: var(--blue-accent);
+  animation: spinStep 1.5s linear infinite;
+}
+
+@keyframes spinStep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.stage-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.stage-subdetail {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.stage-bar-mini {
+  width: 100%;
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.stage-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--blue-accent);
+  transition: width 0.3s ease;
+}
+
+.stage-item.completed .stage-bar-fill {
+  background: var(--success);
+  width: 100% !important;
+}
+
+.stage-status-icon {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.stage-item.completed .stage-status-icon {
+  color: var(--success);
+}
+
+/* ==========================================================================
+   3. COMPLIANCE REPORT DASHBOARD
+   ========================================================================== */
+.report-container {
+  display: none; /* Controlled by JS */
+}
+
+.report-container.active {
+  display: block;
+  animation: fadeInReport 0.5s ease-out;
+}
+
+@keyframes fadeInReport {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.report-grid-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Compliance Score Card & SVG Circular Gauge */
+.score-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.circular-gauge-box {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.circular-gauge-box svg {
+  transform: rotate(-90deg);
+  width: 140px;
+  height: 140px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #E2E8F0;
+  stroke-width: 10;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: var(--success);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400; /* Animated by JS */
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.score-info h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 0.4rem;
+}
+
+.score-info p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Risk Level Indicator */
+.risk-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.risk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.risk-badge.moderate {
+  background: var(--warning-bg);
+  color: #92400E;
+}
+
+.risk-meter-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+}
+
+.risk-segment {
+  height: 10px;
+  flex: 1;
+  border-radius: 50px;
+  background: #E2E8F0;
+}
+
+.risk-segment.low.active { background: var(--success); }
+.risk-segment.mod.active { background: var(--warning); }
+.risk-segment.high.active { background: var(--danger); }
+
+/* Mandatory Declarations Checklist */
+.checklist-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+}
+
+.checklist-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.check-item.pass {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+  color: #166534;
+}
+
+.check-item.fail {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
+}
+
+.check-symbol {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.check-item.pass .check-symbol {
+  background: #22C55E;
+  color: white;
+}
+
+.check-item.fail .check-symbol {
+  background: #EF4444;
+  color: white;
+}
+
+/* Violation Summary & AI Recommendation Grid */
+.report-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.violation-card, .ai-recommendation-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--border-light);
+}
+
+.card-section-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.violation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.violation-box {
+  background: #FEF2F2;
+  border-left: 4px solid var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+}
+
+.violation-box-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #991B1B;
+  margin-bottom: 0.35rem;
+}
+
+.violation-box-desc {
+  font-size: 0.8125rem;
+  color: #7F1D1D;
+  line-height: 1.5;
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rec-box {
+  background: #EFF6FF;
+  border-left: 4px solid var(--blue-accent);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+}
+
+.rec-box-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--navy-light);
+  margin-bottom: 0.35rem;
+}
+
+.rec-box-desc {
+  font-size: 0.8125rem;
+  color: #1E3A8A;
+  line-height: 1.5;
+}
+
+/* Action Bar Bottom */
+.report-actions-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Responsive Dashboard Layout */
+@media (max-width: 900px) {
+  .report-grid-top, .report-grid-bottom, .checklist-grid {
+    grid-template-columns: 1fr;
+  }
+  .stage-item {
+    grid-template-columns: 36px 1fr 36px;
+  }
+  .stage-subdetail {
+    display: none;
+  }
+}

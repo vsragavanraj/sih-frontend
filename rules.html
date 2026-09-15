@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Metrology Rule Library - LabelGuard AI</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/rules.css" />
+</head>
+<body>
+
+  <!-- Top Government Header Strip -->
+  <header class="gov-top-bar">
+    <div class="container gov-top-inner">
+      <div class="gov-brand-strip">
+        <span class="gov-flag-icon" style="background: linear-gradient(180deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%); display: inline-block;"></span>
+        <div class="gov-title-text">
+          Government of India • Ministry of Consumer Affairs | <span>Department of Legal Metrology Portal</span>
+        </div>
+      </div>
+      <div class="gov-tools">
+        <div class="a11y-controls">
+          <button class="a11y-btn" id="btnFontDecrease">A-</button>
+          <button class="a11y-btn" id="btnFontReset">A</button>
+          <button class="a11y-btn" id="btnFontIncrease">A+</button>
+          <button class="a11y-btn" id="btnHighContrast"><i class="ri-contrast-2-line"></i></button>
+        </div>
+        <select class="lang-select">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-emblem.svg" alt="Logo" />
+        <div class="brand-info">
+          <div class="brand-name">LabelGuard <span>AI</span></div>
+          <div class="brand-tag">Legal Metrology Compliance</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="scanner.html" class="nav-link">Scanner Dashboard</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Analytics</a></li>
+        <li><a href="rules.html" class="nav-link active">Rule Library</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="scanner.html" class="btn btn-primary"><i class="ri-scan-line"></i> Launch Scanner</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Rule Library Main Layout -->
+  <main class="rules-wrapper">
+    <div class="container">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; color: #0F172A;">Legal Metrology Rule Library</h1>
+        <p style="color: #64748B; font-size: 1rem;">Statutory guidelines, mandatory declaration standards, font size ratios, and statutory penalties schedule.</p>
+      </div>
+
+      <div class="rules-layout">
+        
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="rules-sidebar">
+          <div class="sidebar-title">Rule Categories</div>
+          <ul class="rule-nav-list">
+            <li>
+              <button class="rule-tab-btn active" data-rule="mrp">
+                <i class="ri-price-tag-3-fill"></i> MRP Rules
+              </button>
+            </li>
+            <li>
+              <button class="rule-tab-btn" data-rule="netqty">
+                <i class="ri-scales-3-fill"></i> Net Quantity Rules
+              </button>
+            </li>
+            <li>
+              <button class="rule-tab-btn" data-rule="manufacturer">
+                <i class="ri-building-4-fill"></i> Manufacturer Rules
+              </button>
+            </li>
+            <li>
+              <button class="rule-tab-btn" data-rule="customercare">
+                <i class="ri-customer-service-2-fill"></i> Customer Care Rules
+              </button>
+            </li>
+            <li>
+              <button class="rule-tab-btn" data-rule="packaging">
+                <i class="ri-calendar-event-fill"></i> Packaging & Date Rules
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- DETAILED RULE DISPLAY PANEL -->
+        <section class="rule-content-card">
+          
+          <div class="rule-header-banner">
+            <div class="rule-title-box">
+              <h2 id="ruleTitle">MRP & Price Declaration Rules</h2>
+              <span class="act-badge" id="ruleSection">Rule 6(1)(e) & Section 36 of Legal Metrology Act, 2009</span>
+            </div>
+          </div>
+
+          <!-- Rule Overview -->
+          <div class="rule-section-block">
+            <h3 class="rule-section-title"><i class="ri-article-line"></i> Statutory Overview</h3>
+            <p class="rule-body-text" id="ruleOverview">
+              Every pre-packaged commodity must prominently declare the Maximum Retail Price (MRP) inclusive of all taxes in Indian Rupees (₹). Dual pricing for the same commodity in different geographical areas without statutory authorization is strictly illegal under the Packaged Commodities Rules.
+            </p>
+          </div>
+
+          <!-- Mandatory Declarations Checklist Points -->
+          <div class="rule-section-block">
+            <h3 class="rule-section-title"><i class="ri-list-check-2"></i> Key Compliance Standards</h3>
+            <ul class="feature-list" id="ruleKeyPoints" style="gap: 0.8rem;">
+              <li><i class="ri-checkbox-circle-line"></i> MRP format must be: 'MRP ₹ xx.xx (incl. of all taxes)' or 'Maximum Retail Price ₹ xx.xx (inclusive of all taxes)'.</li>
+              <li><i class="ri-checkbox-circle-line"></i> Stickers pasted over pre-printed MRP to inflate prices are an offense under Section 36(2).</li>
+              <li><i class="ri-checkbox-circle-line"></i> E-commerce platforms must display MRP on digital product listings equal to physical package MRP.</li>
+            </ul>
+          </div>
+
+          <!-- Mandatory Font Specifications Table -->
+          <div class="rule-section-block">
+            <h3 class="rule-section-title"><i class="ri-text-spacing"></i> Mandatory Minimum Font Size Specifications</h3>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Net Quantity / Package Size</th>
+                  <th>Minimum Height of Numeral & Letters</th>
+                </tr>
+              </thead>
+              <tbody id="ruleFontBody">
+                <tr>
+                  <td><strong>Up to 50g / 50ml</strong></td>
+                  <td><span class="act-badge">1.0 mm</span></td>
+                </tr>
+                <tr>
+                  <td><strong>50g to 200g / 200ml</strong></td>
+                  <td><span class="act-badge">2.0 mm</span></td>
+                </tr>
+                <tr>
+                  <td><strong>200g to 1kg / 1L</strong></td>
+                  <td><span class="act-badge">4.0 mm</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Above 1kg / 1L</strong></td>
+                  <td><span class="act-badge">6.0 mm</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Penalties & Offenses Callout -->
+          <div class="penalty-callout">
+            <div class="penalty-heading">
+              <i class="ri-alarm-warning-fill"></i> Statutory Offenses & Penalties Schedule (Sec 36)
+            </div>
+            <ul class="penalty-list" id="rulePenalties">
+              <li>First Offense: Fine up to ₹25,000 for non-declaration or illegal sticker alteration.</li>
+              <li>Second Offense: Fine up to ₹50,000.</li>
+              <li>Subsequent Offenses: Fine up to ₹1,000,000 or imprisonment up to 1 year, or both.</li>
+            </ul>
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <div>© 2026 Department of Legal Metrology Portal. All rights reserved.</div>
+        <div>
+          <a href="index.html" style="color: #94A3B8; margin-right: 1rem;">Home</a>
+          <a href="scanner.html" style="color: #94A3B8; margin-right: 1rem;">Scanner Dashboard</a>
+          <a href="admin.html" style="color: #94A3B8;">Admin Analytics</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/rules.js"></script>
+</body>
+</html>
